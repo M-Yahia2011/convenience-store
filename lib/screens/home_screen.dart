@@ -43,7 +43,7 @@ class HomeScreen extends StatelessWidget {
             ),
             CategoriesBar(),
              SubtitleAndTextButtonRow(
-              subtitle: "Products",
+              subtitle: "Products", 
               buttonText: "View All",
               route: "",
             ),

@@ -8,5 +8,6 @@ class ProfileScreen extends StatelessWidget {
     return Center(
       child: Text("ProfileScreen"),
     );
-  }
+  } 
 }
+ 

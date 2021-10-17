@@ -10,7 +10,7 @@ class MyColors {
       300: Color(0xffFFCF2D), // FAB button
       400: Color(0xffFFCF2D),
       500: Color(0xffFFCF2D),
-      600: Color(0xffFFCF2D), // msg read icon
+      600: Color(0xffFFCF2D), // msg read icon 
       700: Color(0xffFFCF2D), // status screen grey bars
       800: Color(0xffFFCF2D),
       900: Color(0xffFFCF2D),

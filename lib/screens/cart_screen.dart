@@ -80,7 +80,7 @@ class CartScreen extends StatelessWidget {
                         children: [
                           Text("CHECKOUT"),
                           Icon(Icons.arrow_forward_rounded)
-                        ],
+                        ], 
                       ),
                     ),
                   ),
