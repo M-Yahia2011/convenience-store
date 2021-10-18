@@ -4,6 +4,8 @@ import 'package:grocery_store/screens/home_screen.dart';
 import 'package:grocery_store/screens/profile_screen.dart';
 import 'package:grocery_store/screens/saved_items_screen.dart';
 
+import '../colors.dart';
+
 class TabScreen extends StatefulWidget {
   const TabScreen({Key? key}) : super(key: key);
 
@@ -31,9 +33,10 @@ class _TabScreenState extends State<TabScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       // extendBodyBehindAppBar: true,
-      
+      backgroundColor: MyColors.colors[200],
+
       body: TabBarView(
-        controller: _controller, 
+        controller: _controller,
         children: [
           HomeScreen(),
           SavedItemsScreen(),

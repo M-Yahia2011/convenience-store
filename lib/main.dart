@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       title: "Grocery Store",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+          // backgroundColor: MyColors.colors[200],
           primarySwatch: MyColors.colors,
           brightness: Brightness.light,
           bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -27,11 +28,12 @@ class MyApp extends StatelessWidget {
           textTheme: TextTheme(
             bodyText2: TextStyle(fontSize: 18),
             subtitle1: TextStyle(fontSize: 14),
-          ), 
-          iconTheme: IconThemeData(size: 30),
-          
           ),
-          
+          iconTheme: IconThemeData(size: 30),
+          textButtonTheme: TextButtonThemeData(
+              style: ButtonStyle(
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.amber[600]!)))),
       home: TabScreen(),
     );
   }

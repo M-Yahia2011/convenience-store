@@ -1,53 +1,99 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_store/colors.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  late ScrollController _scrollController;
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: Column(
-          children: [
-            Text(
-              "Delivery Adress",
-              style: Theme.of(context)
-                  .textTheme
-                  .subtitle1
-                  ?.copyWith(color: Colors.grey),
-            ),
-            Text("10, Abbas st"),
-          ],
-        ),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.search_rounded,
-                size: 30,
-              )),
-        ],
-      ),
+      backgroundColor: MyColors.colors[200],
       body: SafeArea(
-        child: Column(
-          children: [
-            AdContainer(),
-            SubtitleAndTextButtonRow(
-              subtitle: "Explore by Categories",
-              buttonText: "View All",
-              route: "",
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: CustomScrollView(slivers: [
+            SliverAppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              title: Column(
+                children: [
+                  Text(
+                    "Delivery Adress",
+                    style: Theme.of(context)
+                        .textTheme
+                        .subtitle1
+                        ?.copyWith(color: Colors.grey),
+                  ),
+                  Text("10, Abbas st"),
+                ],
+              ),
+              actions: [
+                IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.search_rounded,
+                      size: 30,
+                    )),
+              ],
             ),
-            CategoriesBar(),
-             SubtitleAndTextButtonRow(
-              subtitle: "Products", 
-              buttonText: "View All",
-              route: "",
+            SliverToBoxAdapter(child: AdContainer()),
+            SliverToBoxAdapter(
+              child: SubtitleAndTextButtonRow(
+                subtitle: "Explore by Categories",
+                buttonText: "View All",
+                route: "",
+              ),
             ),
-          ],
+            SliverToBoxAdapter(child: CategoriesBar()),
+            SliverToBoxAdapter(
+              child: SubtitleAndTextButtonRow(
+                subtitle: "Products",
+                buttonText: "View All",
+                route: "",
+              ),
+            ),
+            SliverGrid(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 1,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 30,
+              ),
+              delegate: SliverChildBuilderDelegate((ctx, idx) => Container(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    decoration: BoxDecoration(
+                        color: Colors.amber,
+                        borderRadius: BorderRadius.circular(16)),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(child: Placeholder()),
+                        Text("itemName"),
+                        Text("itemPrice")
+                      ],
+                    ),
+                  )),
+            ),
+          ]),
         ),
       ),
       drawer: MyDrawer(),
@@ -119,31 +165,38 @@ class CategoriesBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-        // restorationId: "0",
-        scrollDirection: Axis.horizontal,
-        children: List.generate(
-          10,
-          (index) => GestureDetector(
-            onTap: () {},
-            child: Column(
-              children: [
-                Container(
-                  height: 50,
-                  width: 50,
-                  margin: EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: MyColors.colors,
-                    border: Border.all(color: Colors.grey[300]!),
+    return SizedBox(
+      height: 110,
+      child: ListView(
+          // shrinkWrap: true,
+          // restorationId: "0",
+          scrollDirection: Axis.horizontal,
+          children: List.generate(
+            10,
+            (index) => GestureDetector(
+              onTap: () {},
+              child: Column(
+                children: [
+                  Container(
+                    height: 70,
+                    width: 70,
+                    margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      color: MyColors.colors,
+                      border: Border.all(color: Colors.grey[300]!),
+                    ),
+                    child: Placeholder(),
                   ),
-                  child: Placeholder(),
-                ),
-                Text("ItemName"),
-              ],
+                  Text(
+                    "ItemName",
+                    style: Theme.of(context).textTheme.subtitle2,
+                  ),
+                ],
+              ),
             ),
-          ),
-        ));
+          )),
+    );
   }
 }
 
@@ -157,6 +210,7 @@ class AdContainer extends StatelessWidget {
     return Stack(clipBehavior: Clip.none, children: [
       Container(
         height: 130,
+        padding: EdgeInsets.all(16),
         margin: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8), color: MyColors.colors),

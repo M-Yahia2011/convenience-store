@@ -6,7 +6,7 @@ class MyColors {
     <int, Color>{
       50: Color(0xff20C978), // price font color
       100: Color(0xffF7F7F7), // navbar unselected
-      200: Color(0xffFFCF2D), 
+      200: Color(0xfffdfdfd), 
       300: Color(0xffFFCF2D), // FAB button
       400: Color(0xffFFCF2D),
       500: Color(0xffFFCF2D),
