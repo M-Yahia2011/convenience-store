@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_store/providers/products_provider.dart';
 import 'package:grocery_store/widgets/presented_item.dart';
+import 'package:provider/provider.dart';
 
 class AllProductsScreen extends StatelessWidget {
   const AllProductsScreen({Key? key}) : super(key: key);
@@ -7,6 +9,7 @@ class AllProductsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final items = Provider.of<ItemProvider>(context).items;
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
@@ -37,9 +40,9 @@ class AllProductsScreen extends StatelessWidget {
                     crossAxisSpacing: 16,
                     mainAxisSpacing: 30,
                   ),
-                  itemCount: 20,
+                  itemCount: items.length,
                   itemBuilder: (ctx, idx) {
-                    return PresentedItem();
+                    return PresentedItem(items[idx]);
                   }),
             )
           ],

@@ -4,7 +4,6 @@ import 'package:grocery_store/helpers/colors.dart';
 
 class AppTheme {
   static ThemeData theme = ThemeData(
-      // backgroundColor: MyColors.colors[200],
       primarySwatch: MyColors.colors,
       brightness: Brightness.light,
       bottomNavigationBarTheme: BottomNavigationBarThemeData(

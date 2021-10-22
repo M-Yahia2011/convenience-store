@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:grocery_store/providers/products_provider.dart';
 import 'package:grocery_store/screens/all_products_screen.dart';
-
+import 'package:provider/provider.dart';
 import '/helpers/colors.dart';
 import '/widgets/ads_container.dart';
 import '/widgets/categories_bar.dart';
@@ -73,15 +74,21 @@ class _HomeScreenState extends State<HomeTab> {
                 route: AllProductsScreen.routeName,
               ),
             ),
-            SliverGrid(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 1 / 1.3,
-                crossAxisSpacing: 16,
-                mainAxisSpacing: 30,
+            Consumer<ItemProvider>(
+              builder: (ctx, provider, _) => SliverGrid(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount:
+                      MediaQuery.of(context).orientation == Orientation.portrait
+                          ? 2
+                          : 3,
+                  childAspectRatio: 1 / 1.3,
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 30,
+                ),
+                delegate: SliverChildBuilderDelegate(
+                    (ctx, idx) => PresentedItem(provider.items[idx]),
+                    childCount: provider.items.length),
               ),
-              delegate:
-                  SliverChildBuilderDelegate((ctx, idx) => PresentedItem()),
             ),
           ]),
         ),

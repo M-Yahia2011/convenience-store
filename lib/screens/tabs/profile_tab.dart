@@ -10,8 +10,8 @@ class ProfileTap extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        systemOverlayStyle:
-            SystemUiOverlayStyle(statusBarColor: MyColors.colors),
+        // systemOverlayStyle:
+        //     SystemUiOverlayStyle(statusBarColor: MyColors.colors),
         title: Text("Profile"),
         centerTitle: true,
       ),

@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_store/models/item.dart';
 
 class PresentedItem extends StatefulWidget {
-  const PresentedItem({Key? key}) : super(key: key);
+  final Item item;
+  const PresentedItem(this.item, {Key? key}) : super(key: key);
   @override
   State<PresentedItem> createState() => _PresentedItemState();
 }
 
 class _PresentedItemState extends State<PresentedItem> {
   bool isFavourite = false;
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -35,8 +38,14 @@ class _PresentedItemState extends State<PresentedItem> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text("itemName"),
-                  Text("5.00\$"),
+                  Text(
+                    widget.item.name,
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
+                  Text(
+                    "${widget.item.price}\$",
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
                 ],
               ),
               Container(

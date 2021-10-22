@@ -15,7 +15,9 @@ class AdContainer extends StatelessWidget {
         padding: EdgeInsets.all(16),
         margin: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8), color: MyColors.colors),
+          borderRadius: BorderRadius.circular(8),
+          color: MyColors.colors,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -33,7 +35,7 @@ class AdContainer extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                border: Border.all(color: Colors.amber, width: 2.5),
+                border: Border.all(color: Colors.white, width: 2.5),
                 boxShadow: [
                   BoxShadow(
                       blurRadius: 2, color: Colors.black54, spreadRadius: 0)
