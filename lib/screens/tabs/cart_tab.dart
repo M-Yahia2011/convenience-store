@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_store/widgets/cart_item.dart';
+import 'package:grocery_store/helpers/colors.dart';
+import '/widgets/cart_item.dart';
 
-import '../colors.dart';
 
-class CartScreen extends StatelessWidget {
-  const CartScreen({Key? key}) : super(key: key);
+class CartTab extends StatelessWidget {
+  const CartTab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

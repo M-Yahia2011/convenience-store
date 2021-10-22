@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_store/colors.dart';
+import '../helpers/colors.dart';
 
 class CartItem extends StatelessWidget {
   const CartItem({Key? key}) : super(key: key);
@@ -17,7 +17,9 @@ class CartItem extends StatelessWidget {
           SizedBox(
             // height: 200,
             width: 180,
-            child: Placeholder(),
+            child: Image.asset(
+              "assets/images/bb.png",
+            ),
           ),
           Column(
             children: [
@@ -49,7 +51,7 @@ class CartItem extends StatelessWidget {
                         padding: EdgeInsets.zero,
                         color: Colors.black,
                         icon: Icon(Icons.add),
-                        onPressed: () {}, 
+                        onPressed: () {},
                       ),
                     ),
                   ),

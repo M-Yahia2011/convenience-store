@@ -1,7 +1,9 @@
 import "package:flutter/material.dart";
-import 'package:grocery_store/colors.dart';
-
+import 'package:grocery_store/screens/all_products_screen.dart';
+import '../helpers/app_theme.dart';
 import 'screens/tab_screen.dart';
+import 'screens/categories_table_screen.dart';
+import 'screens/category_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,26 +17,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Grocery Store",
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          // backgroundColor: MyColors.colors[200],
-          primarySwatch: MyColors.colors,
-          brightness: Brightness.light,
-          bottomNavigationBarTheme: BottomNavigationBarThemeData(
-              backgroundColor: Colors.black,
-              selectedIconTheme: IconThemeData(color: MyColors.colors),
-              unselectedIconTheme: IconThemeData(color: MyColors.colors[100]),
-              unselectedItemColor: MyColors.colors[100],
-              showUnselectedLabels: true),
-          textTheme: TextTheme(
-            bodyText2: TextStyle(fontSize: 18),
-            subtitle1: TextStyle(fontSize: 14),
-          ),
-          iconTheme: IconThemeData(size: 30),
-          textButtonTheme: TextButtonThemeData(
-              style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.amber[600]!)))),
+      theme: AppTheme.theme,
+      
+      
       home: TabScreen(),
+      routes: {
+        CategoryScreen.routeName: (ctx) => CategoryScreen(),
+        CategoriesScreen.routeName: (ctx) => CategoriesScreen(),
+        AllProductsScreen.routeName:(ctx)=> AllProductsScreen(),
+      },
     );
   }
 }

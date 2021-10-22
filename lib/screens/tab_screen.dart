@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_store/screens/cart_screen.dart';
-import 'package:grocery_store/screens/home_screen.dart';
-import 'package:grocery_store/screens/profile_screen.dart';
-import 'package:grocery_store/screens/saved_items_screen.dart';
-
-import '../colors.dart';
+import 'package:grocery_store/helpers/colors.dart';
+import 'tabs/cart_tab.dart';
+import 'tabs/favourites_tab.dart';
+import 'tabs/home_tab.dart';
+import 'tabs/profile_tab.dart';
 
 class TabScreen extends StatefulWidget {
   const TabScreen({Key? key}) : super(key: key);
@@ -17,10 +16,18 @@ class _TabScreenState extends State<TabScreen>
     with SingleTickerProviderStateMixin {
   late TabController _controller;
   int tabIdx = 0;
+
   @override
   void initState() {
     super.initState();
     _controller = TabController(length: 4, vsync: this);
+    _controller.addListener(() {
+      if (tabIdx != _controller.index) {
+        setState(() {
+          tabIdx = _controller.index;
+        });
+      }
+    });
   }
 
   @override
@@ -37,12 +44,7 @@ class _TabScreenState extends State<TabScreen>
 
       body: TabBarView(
         controller: _controller,
-        children: [
-          HomeScreen(),
-          SavedItemsScreen(),
-          CartScreen(),
-          ProfileScreen()
-        ],
+        children: [HomeTab(), FavouritesTab(), CartTab(), ProfileTap()],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: tabIdx,
