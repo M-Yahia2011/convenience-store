@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_store/helpers/colors.dart';
+import 'package:grocery_store/providers/cart_provider.dart';
+import 'package:provider/provider.dart';
 import '/widgets/cart_item.dart';
-
 
 class CartTab extends StatelessWidget {
   const CartTab({Key? key}) : super(key: key);
@@ -9,30 +10,40 @@ class CartTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Column(
+        child: Consumer<CartProvider>(builder: (ctx, cartProvider, _) {
+      final items = cartProvider.cartItems;
+      return Column(
         children: [
-          SizedBox(
-            height: 50,
-            child: Stack(
-              children: [
-                IconButton(
-                    onPressed: () {}, icon: Icon(Icons.arrow_back_rounded)),
-                Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Your Cart",
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ],
-            ),
-          ),
+          // SizedBox(
+          //   height: 50,
+          //   child: Stack(
+          //     children: [
+          //       // IconButton(
+          //       //     onPressed: () {}, icon: Icon(Icons.arrow_back_rounded)),
+          //       Align(
+          //         alignment: Alignment.center,
+          //         child: Text(
+          //           "Your Cart",
+          //           textAlign: TextAlign.center,
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
           Expanded(
-            child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: 5,
-                itemBuilder: (ctx, idx) => CartItem()),
-          ),
+              child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: cartProvider.cartItemsNum,
+            itemBuilder: (ctx, idx) => CartItem(
+              id: items[idx].id,
+              category: items[idx].category,
+              available: items[idx].available,
+              image: items[idx].image,
+              name: items[idx].name,
+              price: items[idx].price,
+              quantity: items[idx].quantity,
+            ),
+          )),
           Container(
             margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             height: 85,
@@ -54,11 +65,13 @@ class CartTab extends StatelessWidget {
                             .bodyText2
                             ?.copyWith(color: Colors.white),
                       ),
-                      SizedBox(height: 8),
+                      SizedBox(height: 4),
                       Text(
-                        "12\$",
+                        "${cartProvider.subTotal} \$",
                         style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                            color: Colors.white, fontWeight: FontWeight.bold),
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 24),
                       )
                     ],
                   ),
@@ -80,7 +93,7 @@ class CartTab extends StatelessWidget {
                         children: [
                           Text("CHECKOUT"),
                           Icon(Icons.arrow_forward_rounded)
-                        ], 
+                        ],
                       ),
                     ),
                   ),
@@ -89,7 +102,7 @@ class CartTab extends StatelessWidget {
             ),
           )
         ],
-      ),
-    );
+      );
+    }));
   }
 }

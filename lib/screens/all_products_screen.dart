@@ -9,7 +9,7 @@ class AllProductsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final items = Provider.of<ItemProvider>(context).items;
+    final items = Provider.of<ProductsProvider>(context).items;
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../helpers/colors.dart';
-
+/// Container for ADs & Sale
 class AdContainer extends StatelessWidget {
   const AdContainer({
     Key? key,

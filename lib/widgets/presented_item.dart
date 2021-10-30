@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_store/models/item.dart';
+import 'package:grocery_store/providers/cart_provider.dart';
+import 'package:provider/provider.dart';
 
 class PresentedItem extends StatefulWidget {
   final Item item;
@@ -27,7 +29,7 @@ class _PresentedItemState extends State<PresentedItem> {
               Expanded(
                 child: Center(
                     child: Image.asset(
-                  "assets/images/bb.png",
+                  widget.item.image,
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center,
                 )),
@@ -52,7 +54,10 @@ class _PresentedItemState extends State<PresentedItem> {
                   margin: EdgeInsets.symmetric(vertical: 8),
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      Provider.of<CartProvider>(context, listen: false)
+                          .addItem(widget.item);
+                    },
                     child: Text("ADD"),
                     style: ElevatedButton.styleFrom(
                       elevation: 0,

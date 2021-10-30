@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_store/screens/category_screen.dart';
+import '../models/category.dart';
 import '../helpers/colors.dart';
 import '../helpers/data.dart';
 
+/// Slidable Bar of The Available Categories
 class CategoriesBar extends StatelessWidget {
   const CategoriesBar({
     Key? key,
@@ -33,7 +36,12 @@ class CategoryBarItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+         Navigator.of(context).pushNamed(
+          CategoryScreen.routeName,
+          arguments: _category.id
+        );
+      },
       child: Column(
         children: [
           Container(

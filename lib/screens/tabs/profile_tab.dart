@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:grocery_store/helpers/colors.dart';
+
 
 class ProfileTap extends StatelessWidget {
   const ProfileTap({Key? key}) : super(key: key);

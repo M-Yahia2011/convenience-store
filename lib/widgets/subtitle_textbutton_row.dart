@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Subtitle on LHS & a Button on RHS
 class SubtitleAndTextButtonRow extends StatelessWidget {
   final String subtitle;
   final String buttonText;

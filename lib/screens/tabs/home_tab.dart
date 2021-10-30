@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:grocery_store/providers/products_provider.dart';
 import 'package:grocery_store/screens/all_products_screen.dart';
 import 'package:provider/provider.dart';
-import '/helpers/colors.dart';
 import '/widgets/ads_container.dart';
 import '/widgets/categories_bar.dart';
 import '/widgets/custom_drawer.dart';
@@ -22,8 +21,8 @@ class _HomeScreenState extends State<HomeTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      // backgroundColor: MyColors.colors[200],
+      // extendBodyBehindAppBar: true,
+
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -31,7 +30,7 @@ class _HomeScreenState extends State<HomeTab> {
             SliverAppBar(
               backgroundColor: Colors.transparent,
               systemOverlayStyle:
-                  SystemUiOverlayStyle(statusBarColor: MyColors.colors),
+                  SystemUiOverlayStyle(statusBarColor: Colors.white),
               elevation: 0,
               title: Column(
                 children: [
@@ -74,7 +73,7 @@ class _HomeScreenState extends State<HomeTab> {
                 route: AllProductsScreen.routeName,
               ),
             ),
-            Consumer<ItemProvider>(
+            Consumer<ProductsProvider>(
               builder: (ctx, provider, _) => SliverGrid(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount:

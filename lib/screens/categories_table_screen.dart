@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_store/helpers/data.dart';
+import 'package:grocery_store/screens/category_screen.dart';
+import '../helpers/data.dart';
+import '../models/category.dart';
 import '/helpers/colors.dart';
 
 class CategoriesScreen extends StatelessWidget {
@@ -49,25 +51,34 @@ class CategoryTableItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          Container(
-            width: double.infinity,
-            margin: EdgeInsets.only(bottom: 8),
-            padding: EdgeInsets.all(4),
-            height: 70,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8), color: MyColors.colors),
-            child: Image.asset(_category.iconPath),
-          ),
-          Text(
-            // "CategoryName",
-            _category.name,
-            style: TextStyle(fontSize: 14),
-          ),
-        ],
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).pushNamed(
+          CategoryScreen.routeName,
+          arguments: _category.id
+        );
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Container(
+              width: double.infinity,
+              margin: EdgeInsets.only(bottom: 8),
+              padding: EdgeInsets.all(4),
+              height: 70,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: MyColors.colors),
+              child: Image.asset(_category.iconPath),
+            ),
+            Text(
+              // "CategoryName",
+              _category.name,
+              style: TextStyle(fontSize: 14),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_store/helpers/colors.dart';
+import 'package:grocery_store/providers/cart_provider.dart';
+import 'package:grocery_store/widgets/badge.dart';
+import 'package:provider/provider.dart';
 import 'tabs/cart_tab.dart';
 import 'tabs/favourites_tab.dart';
 import 'tabs/home_tab.dart';
@@ -51,8 +54,8 @@ class _TabScreenState extends State<TabScreen>
         onTap: (currentIdx) {
           setState(() {
             tabIdx = currentIdx;
+            _controller.animateTo(currentIdx);
           });
-          _controller.animateTo(currentIdx);
         },
         type: BottomNavigationBarType.fixed,
         items: [
@@ -61,7 +64,24 @@ class _TabScreenState extends State<TabScreen>
           BottomNavigationBarItem(
               icon: Icon(Icons.favorite_rounded), label: "Saved Items"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart_rounded), label: "Cart"),
+              icon: Consumer<CartProvider>(
+                builder: (ctx, cartProvider, _) => Stack(
+                  children: [
+                    cartProvider.cartItemsNum == 0
+                        ? SizedBox()
+                        : Badge(
+                            value: cartProvider.cartItemsNum.toString(),
+                            color: Colors.amber),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      child: Icon(
+                        Icons.shopping_cart_rounded,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              label: "Cart"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile")
         ],
       ),
