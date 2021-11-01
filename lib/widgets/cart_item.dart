@@ -31,11 +31,11 @@ class CartItem extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: 5),
       color: MyColors.colors[100],
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           SizedBox(
             // height: 200,
-            width: 180,
+            width: 120,
             child: Image.asset(
               image,
             ),
@@ -51,23 +51,39 @@ class CartItem extends StatelessWidget {
               Text("Item description",
                   style: Theme.of(context).textTheme.subtitle2),
 
-              Text(
-                "$price \$",
-                style: TextStyle(
-                    color: MyColors.colors[50],
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20),
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "EGP",
+                      style: TextStyle(
+                          color: MyColors.colors[50],
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14),
+                    ),
+                    TextSpan(
+                      text: "$price",
+                      style: TextStyle(
+                          color: MyColors.colors[50],
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24),
+                    ),
+                    TextSpan(
+                        text: " X$quantity",
+                        style: TextStyle(color: Colors.black, fontSize: 18))
+                  ],
+                ),
               )
             ],
           ),
           Consumer<CartProvider>(
             builder: (ctx, cartProvider, _) => Container(
-                width: 30,
-                height: 120,
+                width: 40,
+                height: 140,
                 margin: EdgeInsets.only(right: 4),
                 decoration: BoxDecoration(
                     color: Color(0xffF0F0F0),
-                    borderRadius: BorderRadius.circular(15)),
+                    borderRadius: BorderRadius.circular(20)),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   // crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,7 +92,7 @@ class CartItem extends StatelessWidget {
                       padding: const EdgeInsets.all(2),
                       child: CircleAvatar(
                         backgroundColor: MyColors.colors,
-                        radius: 15,
+                        radius: 20,
                         child: IconButton(
                           padding: EdgeInsets.zero,
                           color: Colors.black,
@@ -97,11 +113,11 @@ class CartItem extends StatelessWidget {
                         style: Theme.of(context)
                             .textTheme
                             .subtitle1!
-                            .copyWith(fontSize: 18)),
+                            .copyWith(fontSize: 20)),
                     Padding(
                       padding: const EdgeInsets.all(2),
                       child: CircleAvatar(
-                        radius: 15,
+                        radius: 20,
                         backgroundColor: Colors.black,
                         child: IconButton(
                           padding: EdgeInsets.zero,

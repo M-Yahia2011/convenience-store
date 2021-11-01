@@ -1,13 +1,13 @@
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
-import 'package:grocery_store/providers/cart_provider.dart';
-import 'package:grocery_store/providers/products_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:grocery_store/screens/all_products_screen.dart';
+import '../providers/products_provider.dart';
+import '../providers/cart_provider.dart';
 import '../helpers/app_theme.dart';
-import 'screens/tab_screen.dart';
-import 'screens/categories_table_screen.dart';
-import 'screens/category_screen.dart';
+import '../screens/tab_screen.dart';
+import '../screens/all_products_screen.dart';
+import '../screens/categories_table_screen.dart';
+import '../screens/category_screen.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(

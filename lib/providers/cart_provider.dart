@@ -1,6 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:grocery_store/models/cart_item.dart';
-import 'package:grocery_store/models/item.dart';
+import '../models/cart_item.dart';
+import '../models/item.dart';
 
 class CartProvider with ChangeNotifier {
   // ignore: prefer_final_fields
@@ -69,5 +70,35 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  bool isCartItem(itemID) {
+    if (_cartItems.containsKey(itemID)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  CartItem getCartItembyId(itemID) {
+    return _cartItems[itemID]!;
+  }
+
+  Future<void> purchase() async {
+    // var dio = Dio();
+    try {
+      //   Response response = await dio.post("", data: _cartItems);
+      //   if(response.statusCode == 200){
+      //     // purchased
+      //   }
+      await Future.delayed(Duration(seconds: 10), () {});
+      // throw ("some error");
+    } catch (error) {
+      rethrow;
+    }
+  }
+
   // clear on purchase
+  void clear() {
+    _cartItems = {};
+    notifyListeners();
+  }
 }
