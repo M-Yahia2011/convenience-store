@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../helpers/colors.dart';
+
 /// Container for ADs & Sale
 class AdContainer extends StatelessWidget {
   const AdContainer({
@@ -8,6 +10,8 @@ class AdContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final containerFontTheme =
+        TextStyle(fontSize: 22, fontWeight: FontWeight.bold);
     return Stack(clipBehavior: Clip.none, children: [
       Container(
         height: 130,
@@ -20,11 +24,51 @@ class AdContainer extends StatelessWidget {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text("25% Discount on"),
-            Text("BlackBerry"),
-            Text("Order it now"),
+            SizedBox(
+              height: 35,
+              child: RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "25% ",
+                      style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 27,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    TextSpan(
+                      text: "Discount on",
+                      style: TextStyle(fontSize: 20, color: Colors.black),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+              child: Text(
+                "Blackberry",
+                style: TextStyle(
+                  fontFamily: GoogleFonts.sourceSansPro().fontFamily,
+                  fontSize: 24,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Expanded(
+              child: Text(
+                "ORDER IT NOW!",
+                style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.red,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
           ],
         ),
       ),
