@@ -19,7 +19,6 @@ class _TabScreenState extends State<TabScreen>
     with SingleTickerProviderStateMixin {
   late TabController _controller;
   int tabIdx = 0;
-
   @override
   void initState() {
     super.initState();
@@ -42,9 +41,7 @@ class _TabScreenState extends State<TabScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // extendBodyBehindAppBar: true,
       backgroundColor: MyColors.colors[200],
-
       body: TabBarView(
         controller: _controller,
         children: [HomeTab(), FavouritesTab(), CartTab(), ProfileTap()],

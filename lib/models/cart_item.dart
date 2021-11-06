@@ -3,8 +3,6 @@ import 'package:grocery_store/models/item.dart';
 class CartItem extends Item {
   final int quantity;
 
-
-
   CartItem({
     required this.quantity,
     required id,
@@ -18,6 +16,10 @@ class CartItem extends Item {
             available: available,
             category: category,
             id: id,
-            image:image,
+            image: image,
             price: price);
+  @override
+  String toString() {
+    return "$id, $name, $price, $image, $category, $available";
+  }
 }
