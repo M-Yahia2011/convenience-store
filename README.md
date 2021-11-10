@@ -9,5 +9,5 @@ UI is inspired by this <a href="https://xd.adobe.com/view/96290beb-b07a-4728-6b6
   
   <img src="./screenshots/home.png" width=300>      <img src="./screenshots/home2.png" width=300>
   <img src="./screenshots/drawer.png" width=300>      <img src="./screenshots/search.png" width=300>
-  <img src="./screenshots/cart.png" width=300>
+    <img src="./screenshots/categories.png" width=300>   <img src="./screenshots/cart.png" width=300>
 
