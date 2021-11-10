@@ -58,24 +58,7 @@ class _PresentedItemState extends State<PresentedItem> {
                         .bodyText2!
                         .copyWith(fontWeight: FontWeight.bold),
                   ),
-                  RichText(
-                    text: TextSpan(children: [
-                      TextSpan(
-                        text: "EGP",
-                        style: TextStyle(
-                            color: MyColors.colors[50],
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12),
-                      ),
-                      TextSpan(
-                        text: "${widget.item.price}",
-                        style: TextStyle(
-                            color: MyColors.colors[50],
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
-                      ),
-                    ]),
-                  ),
+                  ItemPrice(price: widget.item.price),
                 ],
               ),
               Consumer<CartProvider>(
@@ -102,7 +85,9 @@ class _PresentedItemState extends State<PresentedItem> {
                           ),
                         ));
                   } else {
-                    return ItemCounterModifier(itemID: widget.item.id);
+                    return Padding(
+                        padding: EdgeInsets.symmetric(vertical: 8),
+                        child: ItemCounterModifier(itemID: widget.item.id));
                   }
                 },
               )
@@ -126,6 +111,37 @@ class _PresentedItemState extends State<PresentedItem> {
               },
             )),
       ],
+    );
+  }
+}
+
+class ItemPrice extends StatelessWidget {
+  const ItemPrice({
+    Key? key,
+    required this.price,
+  }) : super(key: key);
+
+  final double price;
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(children: [
+        TextSpan(
+          text: "EGP",
+          style: TextStyle(
+              color: MyColors.colors[50],
+              fontWeight: FontWeight.bold,
+              fontSize: 12),
+        ),
+        TextSpan(
+          text: "$price",
+          style: TextStyle(
+              color: MyColors.colors[50],
+              fontWeight: FontWeight.bold,
+              fontSize: 20),
+        ),
+      ]),
     );
   }
 }

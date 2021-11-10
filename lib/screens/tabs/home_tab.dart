@@ -10,7 +10,7 @@ import '/providers/products_provider.dart';
 import '/screens/all_products_screen.dart';
 import '/widgets/ads_container.dart';
 import '/widgets/categories_bar.dart';
-import '/widgets/custom_drawer.dart';
+import '/widgets/drawer.dart';
 import '/widgets/presented_item.dart';
 import '/widgets/subtitle_textbutton_row.dart';
 import '../categories_table_screen.dart';
@@ -34,7 +34,6 @@ class _HomeScreenState extends State<HomeTab> {
     _focusNode = FocusNode();
     _focusNode.addListener(() {
       // on dismissing the keyboard
-      print("HELLLLLLLLLLLLOOOOO");
       if (_focusNode.hasPrimaryFocus == false) {
         setState(() {
           _isSearching = false;
@@ -70,7 +69,7 @@ class _HomeScreenState extends State<HomeTab> {
           Navigator.of(context).pop();
           return Future.value(false);
         }
-        return ExitAlert(context);
+        return exitAlert(context);
       },
       child: Scaffold(
         // extendBodyBehindAppBar: true,

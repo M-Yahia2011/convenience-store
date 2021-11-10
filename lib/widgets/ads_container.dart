@@ -10,8 +10,6 @@ class AdContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final containerFontTheme =
-        TextStyle(fontSize: 22, fontWeight: FontWeight.bold);
     return Stack(clipBehavior: Clip.none, children: [
       Container(
         height: 130,
@@ -34,7 +32,7 @@ class AdContainer extends StatelessWidget {
                     TextSpan(
                       text: "25% ",
                       style: TextStyle(
-                          color: Colors.red,
+                          color: Colors.pink,
                           fontSize: 27,
                           fontWeight: FontWeight.bold),
                     ),
@@ -65,7 +63,7 @@ class AdContainer extends StatelessWidget {
                 "ORDER IT NOW!",
                 style: TextStyle(
                     fontSize: 20,
-                    color: Colors.red,
+                    color: Colors.teal,
                     fontWeight: FontWeight.bold),
               ),
             ),

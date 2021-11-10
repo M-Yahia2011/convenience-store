@@ -17,7 +17,6 @@ class ItemCounterModifier extends StatelessWidget {
 
     return Container(
         height: 45,
-        margin: EdgeInsets.symmetric(vertical: 8),
         decoration: BoxDecoration(
             color: Color(0xffF0F0F0), borderRadius: BorderRadius.circular(20)),
         child: Row(

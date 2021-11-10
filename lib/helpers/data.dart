@@ -12,6 +12,7 @@ class Data {
     Category("Household", "assets/images/categories/household.png", id: 6),
     Category("Frozen", "assets/images/categories/frozen.png", id: 7),
   ];
+
   static List<Item> allItems = [
     Item(
         id: "0",
@@ -50,4 +51,8 @@ class Data {
         image: "assets/images/carrots.png"),
     // Item(id: 5, name: "Blackberry", price: 22, available: 1, category: 2,image:"assets/images/banana.png"),
   ];
+
+  static Category getCategoryByID(int id) {
+    return categories.firstWhere((category) => category.id == id);
+  }
 }

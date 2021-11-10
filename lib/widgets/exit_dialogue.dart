@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Future<bool> ExitAlert(BuildContext ctx) async {
+Future<bool> exitAlert(BuildContext ctx) async {
   bool exit = false;
   return await showDialog(
       context: ctx,

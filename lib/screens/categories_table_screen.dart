@@ -4,8 +4,8 @@ import '../helpers/data.dart';
 import '../models/category.dart';
 import '/helpers/colors.dart';
 
-class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({Key? key}) : super(key: key);
+class CategoriesTableScreen extends StatelessWidget {
+  const CategoriesTableScreen({Key? key}) : super(key: key);
   static const routeName = "/categories-table";
   @override
   Widget build(BuildContext context) {

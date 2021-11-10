@@ -13,14 +13,20 @@ class AppTheme {
           unselectedItemColor: MyColors.colors[100],
           showUnselectedLabels: true),
       textTheme: TextTheme(
-        bodyText2: TextStyle(fontSize: 18),
-        subtitle1: TextStyle(fontSize: 14),
-      ),
+          bodyText2: TextStyle(fontSize: 18),
+          subtitle1: TextStyle(fontSize: 14),
+          headline1: TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),),
       iconTheme: IconThemeData(size: 30),
       scaffoldBackgroundColor: Colors.grey[100],
       textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all<Color>(Colors.amber[600]!),
+          textStyle:
+              MaterialStateProperty.all<TextStyle>(TextStyle(fontSize: 16)),
+          foregroundColor: MaterialStateProperty.all<Color>(Colors.amber[800]!),
         ),
       ),
       appBarTheme: AppBarTheme(

@@ -28,7 +28,7 @@ class MyDrawer extends StatelessWidget {
                   ),
                 ),
                 DrawerTile(
-                  icon: Icons.help_outline_rounded,
+                  icon: Icons.shopping_bag,
                   title: 'My Orders',
                   function: () {
                     Navigator.of(context).pop();

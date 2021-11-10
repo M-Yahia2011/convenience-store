@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+// import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import '../models/cart_item.dart';
 import '../models/item.dart';
@@ -79,17 +79,25 @@ class CartProvider with ChangeNotifier {
   }
 
   CartItem getCartItembyId(itemID) {
+    
     return _cartItems[itemID]!;
   }
 
   Future<void> purchase() async {
     // var dio = Dio();
+
+    /// [order] is a map of "itemID": quantity
+    Map<String, int> order = {};
+    for (var item in _cartItems.entries) {
+      order[item.value.id] = item.value.quantity;
+    }
+    
     try {
       //   Response response = await dio.post("", data: _cartItems);
       //   if(response.statusCode == 200){
       //     // purchased
       //   }
-      await Future.delayed(Duration(seconds: 10), () {});
+      await Future.delayed(Duration(seconds: 3), () {});
       // throw ("some error");
     } catch (error) {
       rethrow;
