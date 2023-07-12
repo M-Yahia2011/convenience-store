@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../data/models/category.dart';
 import '../../helpers/data.dart';
-import '/helpers/colors.dart';
+
 import 'category_screen.dart';
 
 class CategoriesTableScreen extends StatelessWidget {
@@ -69,7 +69,7 @@ class CategoryTableItem extends StatelessWidget {
               height: 70,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  color: MyColors.colors),
+                  ),
               child: Image.asset(_category.iconPath),
             ),
             Text(

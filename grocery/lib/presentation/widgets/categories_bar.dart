@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_store/utils/theme_constants.dart';
 import '../../data/models/category.dart';
-import '/../helpers/colors.dart';
 import '/../helpers/data.dart';
 import '/../presentation/screens/category_screen.dart';
 
-/// Slidable Bar of The Available Categories
+/// Horizontal Listview of The Categories
 class CategoriesBar extends StatelessWidget {
   const CategoriesBar({
     Key? key,
@@ -37,26 +37,29 @@ class CategoryBarItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-         Navigator.of(context).pushNamed(
-          CategoryScreen.routeName,
-          arguments: _category.id
-        );
+        Navigator.of(context)
+            .pushNamed(CategoryScreen.routeName, arguments: _category.id);
       },
       child: Column(
         children: [
           Container(
             height: 70,
             width: 70,
-            margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
             padding: const EdgeInsets.all(4),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
-              color: MyColors.colors,
-              border: Border.all(color: Colors.grey[300]!),
+              // color: MyColors.colors,
+              border:
+                  Border.all(color: ThemeConstants.mainColor.withOpacity(0.5)),
             ),
-            child: Image.asset(
-              _category.iconPath,
-              fit: BoxFit.cover,
+            child: ColorFiltered(
+              colorFilter: ColorFilter.mode(
+                  ThemeConstants.mainColor.withOpacity(0.6), BlendMode.srcATop),
+              child: Image.asset(
+                _category.iconPath,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Text(
@@ -64,7 +67,7 @@ class CategoryBarItem extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .titleSmall!
-                .copyWith(fontWeight: FontWeight.bold),
+                .copyWith(fontWeight: FontWeight.bold,color: ThemeConstants.textColor),
           ),
         ],
       ),

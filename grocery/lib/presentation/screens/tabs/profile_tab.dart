@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_store/helpers/colors.dart';
+import 'package:grocery_store/presentation/screens/shipping_address_screen.dart';
 
 class ProfileTap extends StatelessWidget {
   const ProfileTap({Key? key}) : super(key: key);
@@ -17,7 +17,7 @@ class ProfileTap extends StatelessWidget {
         children: [
           Container(
             padding: const EdgeInsets.all(8),
-            color: MyColors.colors,
+            // color: MyColors.colors,
             height: MediaQuery.sizeOf(context).height / 4,
             width: double.infinity,
             child: const Row(
@@ -59,23 +59,23 @@ class ProfileTap extends StatelessWidget {
                             ProfileListTile(
                                 text: "Shipping Address",
                                 icon: Icons.location_pin,
-                                routeName: ""),
-                            Divider(),
+                                routeName: ShippingAddressScreen.routeName),
+                            Divider(height: 0),
                             ProfileListTile(
                                 text: "Payment Method",
                                 icon: Icons.payment_rounded,
                                 routeName: ""),
-                            Divider(),
+                            Divider(height: 0),
                             ProfileListTile(
                                 text: "Order History",
                                 icon: Icons.menu,
                                 routeName: ""),
-                            Divider(),
+                            Divider(height: 0),
                             ProfileListTile(
                                 text: "Delivary Status",
                                 icon: Icons.call_received_rounded,
                                 routeName: ""),
-                            Divider(),
+                            Divider(height: 0),
                             ProfileListTile(
                                 text: "Language",
                                 icon: Icons.language_rounded,
@@ -87,7 +87,7 @@ class ProfileTap extends StatelessWidget {
                 SizedBox(
                   height: MediaQuery.sizeOf(context).height / 3.7,
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: Card(
                         // margin: EdgeInsets.zero,
                         shape: RoundedRectangleBorder(
@@ -99,20 +99,21 @@ class ProfileTap extends StatelessWidget {
                                 text: "Privacy Policy",
                                 icon: Icons.location_pin,
                                 routeName: ""),
-                            Divider(),
+                            Divider(height: 0),
                             ProfileListTile(
                                 text: "FAQ",
                                 icon: Icons.payment_rounded,
                                 routeName: ""),
-                            Divider(),
+                            Divider(height: 0),
                             ProfileListTile(
                                 text: "About Us",
                                 icon: Icons.menu,
                                 routeName: ""),
-                            Divider(),
-                            ListTile(
-                              leading: Icon(Icons.star_border_rounded),
-                              title: Text("Rate Our App"),
+                            Divider(height: 0),
+                            ProfileListTile(
+                              icon: Icons.star_border_rounded,
+                              text: "Rate Our App",
+                              routeName: "",
                             ),
                           ]),
                         )),
@@ -141,16 +142,20 @@ class ProfileListTile extends StatelessWidget {
   final String routeName;
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {},
-      child: Row(
-        children: [
-          Icon(icon),
-          const SizedBox(
-            width: 16,
-          ),
-          Text(text),
-        ],
+    return Expanded(
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).pushNamed(routeName);
+        },
+        child: Row(
+          children: [
+            Icon(icon),
+            const SizedBox(
+              width: 16,
+            ),
+            Text(text),
+          ],
+        ),
       ),
     );
   }

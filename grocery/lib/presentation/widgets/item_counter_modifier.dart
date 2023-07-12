@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_store/domain/entities/product_entity.dart';
+import 'package:grocery_store/utils/theme_constants.dart';
 import '../../data/models/cart_item.dart';
 import '../managers/cart_provider.dart';
-import '/../helpers/colors.dart';
 import 'package:provider/provider.dart';
 
 /// A horizontal counter that is used if the item is in the cart
@@ -18,7 +18,8 @@ class ItemCounterModifier extends StatelessWidget {
     return Container(
         height: 45,
         decoration: BoxDecoration(
-            color: const Color(0xffF0F0F0), borderRadius: BorderRadius.circular(20)),
+            color: const Color(0xffF0F0F0),
+            borderRadius: BorderRadius.circular(20)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           // crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,11 +27,11 @@ class ItemCounterModifier extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(2),
               child: CircleAvatar(
-                backgroundColor: MyColors.colors,
+                backgroundColor: ThemeConstants.mainColor,
                 radius: 20,
                 child: IconButton(
                   padding: EdgeInsets.zero,
-                  color: Colors.black,
+                  color: Colors.white,
                   icon: const Icon(Icons.add),
                   onPressed: () {
                     Provider.of<CartProvider>(context, listen: false).addItem(
@@ -54,14 +55,21 @@ class ItemCounterModifier extends StatelessWidget {
               padding: const EdgeInsets.all(2),
               child: CircleAvatar(
                 radius: 20,
-                backgroundColor: Colors.black,
-                child: IconButton(
-                  padding: EdgeInsets.zero,
-                  // color: Colors.white,
-                  icon: const Icon(Icons.remove),
-                  onPressed: () =>
-                      Provider.of<CartProvider>(context, listen: false)
-                          .removeItem(item.id),
+                backgroundColor: ThemeConstants.mainColor,
+                child: Material(
+                  color: Colors.transparent,
+                  child: IconButton(
+                    splashRadius: 1,
+                    padding: EdgeInsets.zero,
+                    // color: Colors.white,
+                    icon: const Icon(
+                      Icons.remove,
+                      color: Colors.white,
+                    ),
+                    onPressed: () =>
+                        Provider.of<CartProvider>(context, listen: false)
+                            .removeItem(item.id),
+                  ),
                 ),
               ),
             ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_store/domain/entities/product_entity.dart';
-import 'package:grocery_store/helpers/colors.dart';
+
 import 'package:grocery_store/helpers/data.dart';
 import 'package:provider/provider.dart';
 import '../managers/cart_provider.dart';
@@ -55,12 +55,12 @@ class ItemDetailsScreen extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Text(
+                  const Text(
                     "Price: ",
                     style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        // fontFamily: GoogleFonts.sourceSansPro().fontFamily
+                    
                         ),
                   ),
                   const SizedBox(
@@ -133,14 +133,14 @@ class ItemPrice extends StatelessWidget {
         TextSpan(
           text: "EGP",
           style: TextStyle(
-              color: MyColors.colors[50],
+              // color: MyColors.colors[50],
               fontWeight: FontWeight.bold,
               fontSize: fontSize * 0.5),
         ),
         TextSpan(
           text: "$price",
           style: TextStyle(
-              color: MyColors.colors[50],
+              // color: MyColors.colors[50],
               fontWeight: FontWeight.bold,
               fontSize: fontSize),
         ),

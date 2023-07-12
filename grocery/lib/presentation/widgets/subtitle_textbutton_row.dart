@@ -16,7 +16,10 @@ class SubtitleAndTextButtonRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(subtitle),
+        Text(
+          subtitle,
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
         TextButton(
             onPressed: () {
               Navigator.of(context).pushNamed(route);

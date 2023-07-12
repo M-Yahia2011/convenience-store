@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-
-import '../../enums.dart';
+import '../../utils/enums.dart';
 import '/presentation/screens/sign_in_screen.dart';
 import '../widgets/auth_button.dart';
 import '../widgets/auth_text_field.dart';

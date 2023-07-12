@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_store/helpers/colors.dart';
+import 'package:grocery_store/utils/theme_constants.dart';
 import 'package:provider/provider.dart';
 import '../managers/cart_provider.dart';
 import '../widgets/badge.dart';
@@ -43,7 +43,7 @@ class _TabScreenState extends State<TabScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColors.colors[200],
+      
       body: TabBarView(
         controller: _controller,
         children: const [HomeTab(), FavouritesTab(), CartTab(), ProfileTap()],
@@ -68,11 +68,18 @@ class _TabScreenState extends State<TabScreen>
                   children: [
                     cartProvider.cartItemsNum == 0
                         ? const SizedBox()
-                        : MyBadge(
-                            value: cartProvider.cartItemsNum.toString(),
-                            color: Colors.amber),
+                        : Positioned(
+                            top: 0,
+                            right: 0,
+                            child: MyBadge(
+                              value: cartProvider.cartItemsNum.toString(),
+                              color: ThemeConstants.mainColor,
+                            ),
+                          ),
                     const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 12),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 12,
+                      ),
                       child: Icon(
                         Icons.shopping_cart_rounded,
                       ),
@@ -81,7 +88,8 @@ class _TabScreenState extends State<TabScreen>
                 ),
               ),
               label: "Cart"),
-          const BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile")
+          const BottomNavigationBarItem(
+              icon: Icon(Icons.person), label: "Profile")
         ],
       ),
     );

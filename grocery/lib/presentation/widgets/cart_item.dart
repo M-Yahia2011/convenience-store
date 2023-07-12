@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:grocery_store/domain/entities/product_entity.dart';
 import 'package:provider/provider.dart';
 import '../managers/cart_provider.dart';
-import '/../helpers/colors.dart';
 
 class CartItem extends StatelessWidget {
   final String id;
@@ -29,7 +28,7 @@ class CartItem extends StatelessWidget {
       height: 180,
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       margin: const EdgeInsets.symmetric(vertical: 5),
-      color: MyColors.colors[100],
+      // color: MyColors.colors[100],
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -57,14 +56,14 @@ class CartItem extends StatelessWidget {
                     TextSpan(
                       text: "EGP",
                       style: TextStyle(
-                          color: MyColors.colors[50],
+                          // color: MyColors.colors[50],
                           fontWeight: FontWeight.bold,
                           fontSize: 14),
                     ),
                     TextSpan(
                       text: "$price",
                       style: TextStyle(
-                          color: MyColors.colors[50],
+                          // color: MyColors.colors[50],
                           fontWeight: FontWeight.bold,
                           fontSize: 24),
                     ),
@@ -91,7 +90,7 @@ class CartItem extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(2),
                       child: CircleAvatar(
-                        backgroundColor: MyColors.colors,
+                        // backgroundColor: MyColors.colors,
                         radius: 20,
                         child: IconButton(
                           padding: EdgeInsets.zero,

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../helpers/colors.dart';
-
 /// Container for ADs & Sale
 class AdContainer extends StatelessWidget {
   const AdContainer({
@@ -12,20 +10,19 @@ class AdContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(clipBehavior: Clip.none, children: [
       Container(
-        height: 130,
+        height: MediaQuery.sizeOf(context).height / 4.5,
         width: double.infinity,
         padding: const EdgeInsets.all(16),
         margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          color: MyColors.colors,
+          // color: MyColors.colors,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SizedBox(
-              height: 35,
+            Expanded(
               child: RichText(
                 text: const TextSpan(
                   children: [
@@ -37,21 +34,20 @@ class AdContainer extends StatelessWidget {
                           fontWeight: FontWeight.bold),
                     ),
                     TextSpan(
-                      text: "Discount on",
+                      text: "Discount",
                       style: TextStyle(fontSize: 20, color: Colors.black),
                     ),
                   ],
                 ),
               ),
             ),
-            Expanded(
+            const Expanded(
               child: Text(
                 "Blackberry",
                 style: TextStyle(
-                  // fontFamily: GoogleFonts.sourceSansPro().fontFamily,
-                  fontSize: 24,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w700,
+                  fontSize: 30,
+                  // color: Colors.black,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
@@ -82,10 +78,11 @@ class AdContainer extends StatelessWidget {
                   BoxShadow(
                       blurRadius: 2, color: Colors.black54, spreadRadius: 0)
                 ]),
-            child: const CircleAvatar(
+            child: CircleAvatar(
               radius: 80,
               // backgroundColor: MyColors.colors[50],
-              backgroundImage: AssetImage("assets/images/bb.png"),
+              backgroundImage: const AssetImage("assets/images/bb.png"),
+              backgroundColor: Colors.grey[200],
             ),
           )),
     ]);

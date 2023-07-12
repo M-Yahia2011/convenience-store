@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_store/helpers/colors.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
 
@@ -132,7 +131,7 @@ class _CartTabState extends State<CartTab> {
                           height: double.infinity,
                           padding: const EdgeInsets.symmetric(horizontal: 5),
                           decoration: const BoxDecoration(
-                              color: MyColors.colors,
+                              // color: MyColors.colors,
                               borderRadius: BorderRadius.only(
                                   topRight: Radius.circular(16),
                                   bottomRight: Radius.circular(16))),

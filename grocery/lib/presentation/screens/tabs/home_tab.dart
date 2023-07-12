@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:grocery_store/utils/theme_constants.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import '../../../domain/entities/product_entity.dart';
@@ -93,9 +94,16 @@ class _HomeScreenState extends State<HomeTab> {
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: CustomScrollView(slivers: [
                 SliverAppBar(
+                  iconTheme:
+                      const IconThemeData(color: ThemeConstants.textColor),
+                  centerTitle: true,
+                  titleTextStyle: Theme.of(context)
+                      .textTheme
+                      .headlineSmall!
+                      .copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: ThemeConstants.textColor),
                   backgroundColor: Colors.transparent,
-                  systemOverlayStyle:
-                      const SystemUiOverlayStyle(statusBarColor: Colors.white),
                   elevation: 0,
                   title: _isSearching == true
                       ? TypeAheadField<ProductEntity>(
@@ -132,24 +140,14 @@ class _HomeScreenState extends State<HomeTab> {
                             );
                           },
                           debounceDuration: const Duration(milliseconds: 500),
-                          suggestionsBoxDecoration: const SuggestionsBoxDecoration(
+                          suggestionsBoxDecoration:
+                              const SuggestionsBoxDecoration(
                             borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(8),
                                 bottomRight: Radius.circular(8)),
                           ),
                         )
-                      : Column(
-                          children: [
-                            Text(
-                              "Delivery Adress",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium
-                                  ?.copyWith(color: Colors.grey),
-                            ),
-                            const Text("10, Abbas st"),
-                          ],
-                        ),
+                      : const Text("Grocery Store"),
                   actions: [
                     IconButton(
                         onPressed: () {
@@ -160,6 +158,7 @@ class _HomeScreenState extends State<HomeTab> {
                         icon: const Icon(
                           Icons.search_rounded,
                           size: 30,
+                          color: ThemeConstants.textColor,
                         )),
                   ],
                 ),
@@ -169,7 +168,7 @@ class _HomeScreenState extends State<HomeTab> {
                 const SliverToBoxAdapter(
                   child: SubtitleAndTextButtonRow(
                     subtitle: "Explore by Categories",
-                    buttonText: "View All",
+                    buttonText: "Explore",
                     route: CategoriesTableScreen.routeName,
                   ),
                 ),
@@ -179,7 +178,7 @@ class _HomeScreenState extends State<HomeTab> {
                 const SliverToBoxAdapter(
                   child: SubtitleAndTextButtonRow(
                     subtitle: "Products",
-                    buttonText: "View All",
+                    buttonText: "Explore",
                     route: AllProductsScreen.routeName,
                   ),
                 ),
