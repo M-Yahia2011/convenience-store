@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_store/domain/entities/product_entity.dart';
 import 'package:provider/provider.dart';
-import '../managers/cart_provider.dart';
+
+import '../../managers/cart_provider.dart';
 
 class CartItem extends StatelessWidget {
   final String id;
@@ -53,7 +54,7 @@ class CartItem extends StatelessWidget {
               RichText(
                 text: TextSpan(
                   children: [
-                    TextSpan(
+                    const TextSpan(
                       text: "EGP",
                       style: TextStyle(
                           // color: MyColors.colors[50],
@@ -62,7 +63,7 @@ class CartItem extends StatelessWidget {
                     ),
                     TextSpan(
                       text: "$price",
-                      style: TextStyle(
+                      style: const TextStyle(
                           // color: MyColors.colors[50],
                           fontWeight: FontWeight.bold,
                           fontSize: 24),

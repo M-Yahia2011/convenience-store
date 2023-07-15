@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../utils/enums.dart';
+import '../../../utils/enums.dart';
 
 class AuthTextField extends StatelessWidget {
   const AuthTextField({Key? key, 

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
-
 import '../../managers/cart_provider.dart';
-import '../../widgets/cart_item.dart';
-
+import '../../widgets/cart_tab/cart_item.dart';
 class CartTab extends StatefulWidget {
   const CartTab({Key? key}) : super(key: key);
 

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_store/domain/entities/product_entity.dart';
 import 'package:grocery_store/utils/theme_constants.dart';
-import '../../data/models/cart_item.dart';
-import '../managers/cart_provider.dart';
+
 import 'package:provider/provider.dart';
+
+import '../../../data/models/cart_item.dart';
+import '../../managers/cart_provider.dart';
 
 /// A horizontal counter that is used if the item is in the cart
 class ItemCounterModifier extends StatelessWidget {
@@ -17,6 +19,7 @@ class ItemCounterModifier extends StatelessWidget {
 
     return Container(
         height: 45,
+        margin: EdgeInsets.symmetric(vertical: 4),
         decoration: BoxDecoration(
             color: const Color(0xffF0F0F0),
             borderRadius: BorderRadius.circular(20)),

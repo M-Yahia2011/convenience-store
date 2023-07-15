@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:grocery_store/utils/theme_constants.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import '../../../domain/entities/product_entity.dart';
+import '../../../helpers/data.dart';
 import '../../managers/products_provider.dart';
-import '../../widgets/ads_container.dart';
 import '../../widgets/categories_bar.dart';
 import '../../widgets/drawer.dart';
 import '../../widgets/exit_dialogue.dart';
-import '../../widgets/presented_item.dart';
-import '../../widgets/subtitle_textbutton_row.dart';
+import '../../widgets/home_tab/ads_container.dart';
+import '../../widgets/home_tab/presented_item.dart';
+import '../../widgets/home_tab/subtitle_textbutton_row.dart';
 import '../all_products_screen.dart';
 import '../item_details_screen.dart';
-import '/helpers/data.dart';
 import '../categories_table_screen.dart';
 
 class HomeTab extends StatefulWidget {
@@ -191,7 +190,7 @@ class _HomeScreenState extends State<HomeTab> {
                           : 3,
                       childAspectRatio: 1 / 1.3,
                       crossAxisSpacing: 16,
-                      mainAxisSpacing: 30,
+                      mainAxisSpacing: 16,
                     ),
                     delegate: SliverChildBuilderDelegate(
                         (ctx, idx) => PresentedItem(provider.items[idx]),

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../managers/products_provider.dart';
-import '../widgets/presented_item.dart';
+import '../widgets/home_tab/presented_item.dart';
 
 class AllProductsScreen extends StatelessWidget {
   const AllProductsScreen({Key? key}) : super(key: key);

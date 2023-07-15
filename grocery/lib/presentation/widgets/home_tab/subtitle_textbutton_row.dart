@@ -18,7 +18,7 @@ class SubtitleAndTextButtonRow extends StatelessWidget {
       children: [
         Text(
           subtitle,
-          style: Theme.of(context).textTheme.headlineSmall,
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
         TextButton(
             onPressed: () {

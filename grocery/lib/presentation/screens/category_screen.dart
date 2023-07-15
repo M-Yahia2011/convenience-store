@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_store/helpers/data.dart';
 import 'package:provider/provider.dart';
-
 import '../managers/products_provider.dart';
-import '../widgets/presented_item.dart';
+import '../widgets/home_tab/presented_item.dart';
 
 class CategoryScreen extends StatelessWidget {
   static const routeName = "/choose-category";

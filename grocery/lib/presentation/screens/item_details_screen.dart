@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_store/domain/entities/product_entity.dart';
-
+import '../widgets/home_tab/item_counter_modifier.dart';
+import '/domain/entities/product_entity.dart';
 import 'package:grocery_store/helpers/data.dart';
 import 'package:provider/provider.dart';
 import '../managers/cart_provider.dart';
-import '../widgets/item_counter_modifier.dart';
 import 'categories_table_screen.dart';
 import 'category_screen.dart';
 
@@ -15,7 +14,8 @@ class ItemDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ProductEntity item = ModalRoute.of(context)!.settings.arguments as ProductEntity;
+    final ProductEntity item =
+        ModalRoute.of(context)!.settings.arguments as ProductEntity;
     return Scaffold(
       appBar: AppBar(
         title: Text(item.name),
@@ -27,29 +27,33 @@ class ItemDetailsScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Consumer<CartProvider>(
           builder: (ctx, cartProvider, _) => Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              TextButton.icon(
-                onPressed: () => Navigator.of(context).pushNamed(
-                    CategoryScreen.routeName,
-                    arguments: item.category),
-                icon: const Icon(
-                  Icons.arrow_forward,
-                  size: 18,
-                ),
-                label: Text(
-                  Data.getCategoryByID(item.category).name,
-                ),
+              Row(
+                children: [
+                  TextButton.icon(
+                    onPressed: () => Navigator.of(context).pushNamed(
+                        CategoryScreen.routeName,
+                        arguments: item.category),
+                    icon: const Icon(
+                      Icons.arrow_forward,
+                      size: 18,
+                    ),
+                    label: Text(
+                      Data.getCategoryByID(item.category).name,
+                    ),
+                  ),
+                ],
               ),
               Text(
                 item.name,
-                style: Theme.of(context).textTheme.displayLarge,
+                style: Theme.of(context).textTheme.displaySmall,
               ),
+              //TODO: horizontal Listview of the item images
               Container(
                 decoration:
                     BoxDecoration(border: Border.all(color: Colors.grey[200]!)),
-                width: double.infinity,
-                height: 250,
+                height: MediaQuery.sizeOf(context).height / 5,
                 margin: const EdgeInsets.fromLTRB(0, 15, 0, 40),
                 child: Image.asset(item.image),
               ),
@@ -58,10 +62,9 @@ class ItemDetailsScreen extends StatelessWidget {
                   const Text(
                     "Price: ",
                     style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                    
-                        ),
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   const SizedBox(
                     width: 10,

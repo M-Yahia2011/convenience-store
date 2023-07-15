@@ -1,5 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:grocery_store/presentation/screens/shipping_address_screen.dart';
+import '/presentation/screens/shipping_address_screen.dart';
 
 class ProfileTap extends StatelessWidget {
   const ProfileTap({Key? key}) : super(key: key);
@@ -8,6 +9,8 @@ class ProfileTap extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // hack for the line under the appbar
+        toolbarHeight: kToolbarHeight + 1.25,
         elevation: 0,
         actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.edit))],
         title: const Text("Profile"),
@@ -16,38 +19,30 @@ class ProfileTap extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            padding: const EdgeInsets.all(8),
-            // color: MyColors.colors,
-            height: MediaQuery.sizeOf(context).height / 4,
-            width: double.infinity,
-            child: const Row(
-              children: [
-                ProfilePicture(
-                    imgUrl:
-                        "https://t3.ftcdn.net/jpg/02/77/57/98/360_F_277579821_fS4K3BDHVlMYzw7EZppPeWU6qMrZS6Nx.jpg"),
-                SizedBox(width: 16),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text("Mohamed Yahia"),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Text("m.yahia.eid2011@gmail.com")
-                  ],
-                )
-              ],
-            ),
+            color: Theme.of(context).primaryColor,
+            height: MediaQuery.sizeOf(context).height / 3.8,
+          ),
+          const Column(
+            children: [
+              ProfilePicture(
+                  imgUrl:
+                      "https://t3.ftcdn.net/jpg/02/77/57/98/360_F_277579821_fS4K3BDHVlMYzw7EZppPeWU6qMrZS6Nx.jpg"),
+              SizedBox(height: 16),
+              Text("m.yahia.eid2011@gmail.com",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold))
+            ],
           ),
           Positioned(
-            top: MediaQuery.sizeOf(context).height / 5,
+            top: MediaQuery.sizeOf(context).height / 5.5,
             left: 1,
             right: 1,
             child: Column(
               children: [
                 SizedBox(
-                  height: MediaQuery.sizeOf(context).height / 3,
+                  height: MediaQuery.sizeOf(context).height / 3.2,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Card(
@@ -85,7 +80,7 @@ class ProfileTap extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.sizeOf(context).height / 3.7,
+                  height: MediaQuery.sizeOf(context).height / 4,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: Card(
@@ -122,7 +117,22 @@ class ProfileTap extends StatelessWidget {
               ],
             ),
           ),
-          // had to put a column to make the stack cover the entire body
+          Positioned(
+            bottom: 5,
+            right: 0,
+            left: 0,
+            child: Container(
+                width: double.infinity,
+                height: 55,
+                child: TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      "Log Out",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ))),
+          ),
+          // had to put a column to make the stack cover the entire body height
           const Column(),
         ],
       ),
@@ -176,14 +186,17 @@ class ProfilePicture extends StatelessWidget {
           child: Container(
             width: 100,
             height: 100,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               shape: BoxShape.circle,
+              border: Border.all(color: Colors.white, width: 2.5),
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(100),
-              child: Image.network(
-                imgUrl,
+              child: CachedNetworkImage(
+                imageUrl: imgUrl,
                 fit: BoxFit.fitHeight,
+                placeholder: (context, url) => const CircularProgressIndicator(),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
             ),
           ),
