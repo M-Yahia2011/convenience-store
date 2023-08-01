@@ -1,9 +1,16 @@
-# Convenient Store app
+# grocery
 
-An Ecomerce Flutter app for grocery stores which user can use to order items online.
-UI is inspired by the following desings [First](https://xd.adobe.com/view/96290beb-b07a-4728-6b62-adbf213740a5-e018), [Second](https://www.behance.net/gallery/80305687/E-commerce-app-(bazaar)).
+A new Flutter project.
 
-  
-![alt text](./screenshots/home.png)  ![alt text](./screenshots/home2.png)
-![alt text](./screenshots/drawer.png) ![alt text](./screenshots/search.png)
-![alt text](./screenshots/categories.png) ![alt text](./screenshots/cart.png)
+## Getting Started
+
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
